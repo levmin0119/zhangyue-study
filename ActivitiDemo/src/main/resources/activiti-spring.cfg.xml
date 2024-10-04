@@ -13,14 +13,68 @@
       http://www.springframework.org/schema/tx
       http://www.springframework.org/schema/tx/spring-tx-3.1.xsd ">
     <bean id="processEngineConfiguration" class="org.activiti.spring.SpringProcessEngineConfiguration">
-        <property name="jdbcDriver" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="jdbcUrl"
-                  value="jdbc:mysql://192.168.44.129:3306/activiti?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=GMT%2B8"/>
-        <property name="jdbcUsername" value="root"/>
-        <property name="jdbcPassword" value="Zy5201ljf&amp;"/>
-<!--        <property name="databaseSchemaUpdate" value="true"/>-->
+        <!-- 数据源 -->
+        <property name="dataSource" ref="dataSource"/>
+        <!-- 使用spring事务管理器 -->
+        <property name="transactionManager" ref="transactionManager"/>
+        <!-- 数据库策略 -->
+        <property name="databaseSchemaUpdate" value="drop-create"/>
+        <!--        <property name="databaseSchemaUpdate" value="true"/>-->
         <!--定时任务-->
         <property name="jobExecutorActivate" value="false"/>
     </bean>
+
+    <!-- 流程引擎 -->
+    <bean id="processEngine" class="org.activiti.spring.ProcessEngineFactoryBean">
+        <property name="processEngineConfiguration" ref="processEngineConfiguration"/>
+    </bean>
+    <!-- 资源服务service -->
+    <bean id="repositoryService" factory-bean="processEngine"
+          factory-method="getRepositoryService"/>
+    <!-- 流程运行service -->
+    <bean id="runtimeService" factory-bean="processEngine"
+          factory-method="getRuntimeService"/>
+    <!-- 任务管理service -->
+    <bean id="taskService" factory-bean="processEngine"
+          factory-method="getTaskService"/>
+    <!-- 历史管理service -->
+    <bean id="historyService" factory-bean="processEngine" factory-method="getHistoryService"/>
+    <!-- 用户管理service -->
+<!--    <bean id="identityService" factory-bean="processEngine" factory-method="getIdentityService"/>-->
+    <!-- 引擎管理service -->
+    <bean id="managementService" factory-bean="processEngine" factory-method="getManagementService"/>
+    <!-- 数据源 -->
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        <property name="url"
+                  value="jdbc:mysql://192.168.44.129:3306/activiti?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=GMT%2B8"/>
+        <property name="username" value="root"/>
+        <property name="password" value="Zy5201ljf&amp;"/>
+        <property name="maxActive" value="3"/>
+        <property name="maxIdle" value="1"/>
+    </bean>
+    <!-- 事务管理器 -->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- 通知 -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <!-- 传播行为 -->
+            <tx:method name="save*" propagation="REQUIRED"/>
+            <tx:method name="insert*" propagation="REQUIRED"/>
+            <tx:method name="delete*" propagation="REQUIRED"/>
+            <tx:method name="update*" propagation="REQUIRED"/>
+            <tx:method name="find*" propagation="SUPPORTS" read-only="true"/>
+            <tx:method name="get*" propagation="SUPPORTS" read-only="true"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <!-- 切面，根据具体项目修改切点配置 -->
+    <aop:config proxy-target-class="true">
+        <aop:advisor advice-ref="txAdvice"  pointcut="execution(* com.zy.activitidemo.service.impl.*.(..))*" />
+    </aop:config>
 
 </beans>
