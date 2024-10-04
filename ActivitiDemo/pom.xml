@@ -29,7 +29,7 @@
     <properties>
         <java.version>17</java.version>
         <acriviti-version>7.0.0.Beta1</acriviti-version>
-        <slf4j.version>1.6.6</slf4j.version>
+<!--        <slf4j.version>1.6.6</slf4j.version>-->
         <log4j.version>1.2.12</log4j.version>
     </properties>
     <dependencies>
@@ -139,11 +139,11 @@
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.slf4j</groupId>-->
+<!--            <artifactId>slf4j-log4j12</artifactId>-->
+<!--            <version>${slf4j.version}</version>-->
+<!--        </dependency>-->
 
 
 
