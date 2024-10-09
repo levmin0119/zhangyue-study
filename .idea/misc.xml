@@ -6,6 +6,8 @@
       <list>
         <option value="$PROJECT_DIR$/zhangyue-001/pom.xml" />
         <option value="$PROJECT_DIR$/ActivitiDemo/pom.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/DesignPattern/pom.xml" />
       </list>
     </option>
   </component>

@@ -88,35 +88,54 @@
                 </configuration>
             </plugin>
 
-            <!-- mybatis ⽣成器插件 -->
-<!--            <plugin>-->
-<!--                <groupId>org.mybatis.generator</groupId>-->
-<!--                &lt;!&ndash;                <groupId>org.mybatis.generator</groupId>&ndash;&gt;-->
-<!--&lt;!&ndash;                <artifactId>mybatis-generator-maven-plugin</artifactId>&ndash;&gt;-->
-<!--                <artifactId>mybatis-generator-maven-plugin</artifactId>-->
-<!--                <version>1.4.1</version>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+<!--                3.0版本之后有所改动-->
+                <version>1.1</version>
+                <executions>
+<!--                    定义pre-clean-->
+                    <execution>
+                        <id>zy.pre-clean</id>
+                        <phase>pre-clean</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <echo>pre-clean phase</echo>
+                            </tasks>
+                        </configuration>
+                    </execution>
+<!--                    定义clean-->
+                    <execution>
+                        <id>zy.clean</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <echo>clean phase</echo>
+                            </tasks>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>zy.post-clean</id>
+                        <phase>post-clean</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <tasks>
+                                <echo>post-clean phase</echo>
+                            </tasks>
+                        </configuration>
+                    </execution>
+                </executions>
 
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>Generate MyBatis Artifacts</id>-->
-<!--                        <phase>deploy</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>generate</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--                &lt;!&ndash; 相关配置 &ndash;&gt;-->
-<!--                <configuration>-->
-<!--                    &lt;!&ndash; 打开⽇志 &ndash;&gt;-->
-<!--                    <verbose>true</verbose>-->
-<!--                    &lt;!&ndash; 允许覆盖 &ndash;&gt;-->
-<!--                    <overwrite>true</overwrite>-->
-<!--                    &lt;!&ndash; 配置⽂件路径 &ndash;&gt;-->
-<!--                    <configurationFile>-->
-<!--                        src/main/resources/mybatis/generatorConfig.xml-->
-<!--                    </configurationFile>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
+
+            </plugin>
         </plugins>
     </build>
 
