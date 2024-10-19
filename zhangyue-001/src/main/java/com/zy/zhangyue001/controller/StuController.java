@@ -24,4 +24,9 @@ public class StuController {
     public List<Stu> getStus(@RequestBody StuRequest stuRequest) {
        return stuService.getStus(stuRequest);
     }
+
+    @PostMapping("/deleteById")
+    public int deleteById(@RequestBody StuRequest stuRequest) {
+        return stuService.deleteStu(stuRequest);
+    }
 }

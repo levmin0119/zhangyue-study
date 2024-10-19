@@ -8,4 +8,6 @@ import java.util.List;
 public interface StuService {
 
     List<Stu> getStus(StuRequest stuRequest);
+
+    int deleteStu(StuRequest stuRequest);
 }

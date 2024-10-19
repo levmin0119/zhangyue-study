@@ -29,4 +29,12 @@ public class StuServiceImpl implements StuService {
         }
         return stuMapper.selectByExample(stuExample);
     }
+
+    @Override
+    public int deleteStu(StuRequest stuRequest) {
+        if (stuRequest.getId() != null){
+           return stuMapper.deleteByPrimaryKey(stuRequest.getId());
+        }
+        return 0;
+    }
 }
