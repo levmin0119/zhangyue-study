@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/JVM-demo/JVM-demo.iml" filepath="$PROJECT_DIR$/JVM-demo/JVM-demo.iml" />
       <module fileurl="file://$PROJECT_DIR$/zhangyue-study.iml" filepath="$PROJECT_DIR$/zhangyue-study.iml" />
     </modules>
   </component>
