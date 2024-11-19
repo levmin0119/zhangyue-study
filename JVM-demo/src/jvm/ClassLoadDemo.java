@@ -2,6 +2,8 @@ package jvm;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.HashSet;
 
 /**
  * 类加载器的加载流程实例代码
@@ -64,7 +66,17 @@ public class ClassLoadDemo {
 
     class Another {
         public void speak() {
+
+            HashMap<String, Object> stringObjectHashMap = new HashMap<>();
+
             System.out.println("easy Coding!");
+
+            HashSet hashSet = new HashSet<String>();
+
+            hashSet.add("1");
+
+            hashSet.add("2");
+
         }
     }
 }
