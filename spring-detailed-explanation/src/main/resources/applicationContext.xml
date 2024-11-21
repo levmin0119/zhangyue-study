@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd"
+       default-autowire="byName">
+    <!--  class代表的是类  -->
+    <bean id="messageService" class="com.zy.springdetailedexplanation.service.iml.MessageServiceImpl"/>
+
+    <bean id="beanInjectionDemo" class="com.zy.springdetailedexplanation.service.BeanInjectionDemo">
+        <constructor-arg>
+            <bean class="com.zy.springdetailedexplanation.service.iml.MessageServiceImpl"/>
+        </constructor-arg>
+    </bean>
+
+    <bean id="userService" class="com.zy.springdetailedexplanation.service.UserService">
+<!--        <aop:aspectj-autoproxy expose-proxy="true"/>-->
+    </bean>
+
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+</beans>

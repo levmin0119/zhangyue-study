@@ -2,7 +2,9 @@ package com.zy.zhangyue001.controller;
 
 import com.zy.zhangyue001.entity.Stu;
 import com.zy.zhangyue001.entity.StuExample;
+import com.zy.zhangyue001.entity.User;
 import com.zy.zhangyue001.mapper.StuMapper;
+import com.zy.zhangyue001.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +16,10 @@ public class HelloController {
 
     @Autowired
     private StuMapper stuMapper;
+
+    @Autowired
+    private UserService userService;
+
 
 
     @GetMapping("/name")
@@ -37,5 +43,11 @@ public class HelloController {
         List<Stu> stus =
                 stuMapper.selectByExample(stuExample);
         return stus.get(0);
+    }
+
+    @PostMapping("getUsers")
+    public List<User> getUsers() {
+        List<User> users = userService.getUsers();
+        return users;
     }
 }
