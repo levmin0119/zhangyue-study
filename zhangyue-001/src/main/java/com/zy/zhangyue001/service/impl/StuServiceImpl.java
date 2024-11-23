@@ -8,6 +8,7 @@ import com.zy.zhangyue001.req.StuRequest;
 import com.zy.zhangyue001.service.StuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -30,6 +31,7 @@ public class StuServiceImpl implements StuService {
         return stuMapper.selectByExample(stuExample);
     }
 
+    @Transactional()
     @Override
     public int deleteStu(StuRequest stuRequest) {
         if (stuRequest.getId() != null){

@@ -38,6 +38,14 @@
       <artifactId>aspectjweaver</artifactId>
       <version>1.6.8_2</version>
     </dependency>
+
+    <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
+    <dependency>
+      <groupId>redis.clients</groupId>
+      <artifactId>jedis</artifactId>
+      <version>5.2.0-beta5</version>
+    </dependency>
+
   </dependencies>
   <build>
     <finalName>spring-detailed-explanation</finalName>
