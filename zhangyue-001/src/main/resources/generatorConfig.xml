@@ -11,9 +11,9 @@
 
         <!-- 数据库连接配置 -->
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://192.168.44.129:3306/zhangyue_study"
+                        connectionURL="jdbc:mysql://192.168.92.128:3306/spring_study?autoReconnect=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=GMT%2B8"
                         userId="root"
-                        password="Zy5201ljf&amp;">
+                        password="root">
         </jdbcConnection>
 
         <!-- Java 类型解析器 -->
@@ -22,23 +22,23 @@
         </javaTypeResolver>
 
         <!-- 生成实体类的目标目录 -->
-        <javaModelGenerator targetPackage="com.zy.zhangyue001.entity" targetProject="C:\Users\zy520\IdeaProjects\zhangyue-study\zhangyue-001\src\main\java">
+        <javaModelGenerator targetPackage="com.zy.zhangyue001.entity" targetProject="C:\Users\zhangyue\IdeaProjects\zhangyue-study\zhangyue-001\src\main\java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
         <!-- 生成 Mapper 接口的目标目录 -->
-        <sqlMapGenerator targetPackage="com.zy.zhangyue001.mapper" targetProject="C:\Users\zy520\IdeaProjects\zhangyue-study\zhangyue-001\src\main\resources">
+        <sqlMapGenerator targetPackage="com.zy.zhangyue001.mapper" targetProject="C:\Users\zhangyue\IdeaProjects\zhangyue-study\zhangyue-001\src\main\resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <!-- 生成 Mapper 接口实现类的目标目录 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.zy.zhangyue001.mapper" targetProject="C:\Users\zy520\IdeaProjects\zhangyue-study\zhangyue-001\src\main\java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.zy.zhangyue001.mapper" targetProject="C:\Users\zhangyue\IdeaProjects\zhangyue-study\zhangyue-001\src\main\java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
         <!-- 要生成代码的表配置 -->
-        <table tableName="stu" domainObjectName="Stu">
+        <table tableName="student" domainObjectName="Student">
             <property name="useActualColumnNames" value="true"/>
         </table>
     </context>

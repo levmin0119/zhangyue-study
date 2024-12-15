@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!--声明缓存名：user 过期时间：对象永不过期，在内存中该缓存可存储最大的数据量为1000，当内存对象数量达到了最大将溢出的对象写入磁盘-->
+<ehcache>
+    <cache name="stu" eternal="true" overflowToDisk="true" maxElementsInMemory="1000"/>
+</ehcache>
